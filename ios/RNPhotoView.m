@@ -301,7 +301,17 @@
             return;
         }
 
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:imageURL];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:imageURL];        
+        NSDictionary *headers = source[@"headers"];
+        
+        if (headers) {
+            [request setAllHTTPHeaderFields:headers];
+        }
+
+        __weak RNPhotoView *weakSelf = self;
+        if (_onPhotoViewerLoadStart) {
+            _onPhotoViewerLoadStart(nil);
+        }
 
         __weak RNPhotoView *weakSelf = self;
         if (_onPhotoViewerLoadStart) {

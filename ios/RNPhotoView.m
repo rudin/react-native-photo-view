@@ -313,11 +313,6 @@
             _onPhotoViewerLoadStart(nil);
         }
 
-        __weak RNPhotoView *weakSelf = self;
-        if (_onPhotoViewerLoadStart) {
-            _onPhotoViewerLoadStart(nil);
-        }
-
         // use default values from [imageLoader loadImageWithURLRequest:request callback:callback] method
         [_bridge.imageLoader loadImageWithURLRequest:request
                                         size:CGSizeZero
